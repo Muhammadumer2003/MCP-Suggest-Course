@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Course Advisor",
+  "name_for_model": "course_advisor",
+  "description_for_model": "Suggests university courses based on major, interests, and completed courses.",
+  "description_for_human": "Helps students pick the best courses for next semester.",
+  "auth": { "type": "none" },
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:3000/openapi.json"
+  },
+   
+  "contact_email": "muhammad.umer@inferifi.com",
+  "legal_info_url": "https://localhost/legal"
+}

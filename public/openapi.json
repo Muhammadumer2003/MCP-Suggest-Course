@@ -1,0 +1,62 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "University Course Advisor",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/suggestCourses": {
+      "post": {
+        "summary": "Suggest next courses based on student data",
+        "operationId": "suggestCourses",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "major": { "type": "string" },
+                  "interests": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "completedCourses": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["major", "interests", "completedCourses"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Course recommendations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recommendations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "courseCode": { "type": "string" },
+                          "title": { "type": "string" },
+                          "reason": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
