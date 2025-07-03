@@ -37,17 +37,17 @@ app.post('/suggestCourses', (req, res) => {
 
   const recommendations = allCourses
     .filter(course => 
-      interests.some(interest => course.tags.includes(interest)) &&
+      interests.some(interest => course?.tags?.includes(interest)) &&
       course.prereqs.every(prereq => completedCourses.includes(prereq))
     )
     .map(course => ({
       courseCode: course.code,
-      title: course.title,
-      reason: `Matches interests (${course.tags.join(", ")}) and prerequisites`
+      title: course?.title,
+      reason: `Matches interests (${course?.tags.join(", ")}) and prerequisites`
     }));
 
   res.json({ recommendations });
 });
 
-app.listen(process.env.Express_Port_no , () => console.log('MCP server running on port 3000'));
+app.listen(process.env.Express_Port_no||3000 , () => console.log('MCP server running on port 3000'));
 
